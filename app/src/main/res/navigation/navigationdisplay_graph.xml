@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigationdisplay_graph">
+
+    <fragment
+        android:id="@+id/displayListFragment"
+        android:name="com.ugurd.guideapp.DisplayListFragment"
+        android:label="fragment_display_list"
+        tools:layout="@layout/fragment_display_list" >
+        <action
+            android:id="@+id/action_displayListFragment_to_displayFragment"
+            app:destination="@id/displayFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/displayFragment"
+        android:name="com.ugurd.guideapp.DisplayFragment"
+        android:label="fragment_display"
+        tools:layout="@layout/fragment_display" >
+        <action
+            android:id="@+id/action_displayFragment_to_displayListFragment"
+            app:destination="@id/displayListFragment" />
+    </fragment>
+</navigation>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigationsave_graph"
+    app:startDestination="@id/editSaveListFragment">
+
+    <fragment
+        android:id="@+id/editSaveListFragment"
+        android:name="com.ugurd.guideapp.EditSaveListFragment"
+        android:label="fragment_edit_save_list"
+        tools:layout="@layout/fragment_edit_save_list" >
+        <action
+            android:id="@+id/action_editSaveListFragment_to_editSaveFragment"
+            app:destination="@id/editSaveFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editSaveFragment"
+        android:name="com.ugurd.guideapp.EditSaveFragment"
+        android:label="fragment_edit_save"
+        tools:layout="@layout/fragment_edit_save" >
+        <action
+            android:id="@+id/action_editSaveFragment_to_editSaveListFragment"
+            app:destination="@id/editSaveListFragment" />
+    </fragment>
+</navigation>
