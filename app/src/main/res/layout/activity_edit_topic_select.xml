@@ -6,4 +6,35 @@
     android:layout_height="match_parent"
     tools:context=".EditTopicSelectActivity">
 
+    <Spinner
+        android:id="@+id/spinnerEditTopic2"
+        android:layout_width="331dp"
+        android:layout_height="67dp"
+        android:layout_marginTop="54dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerEditTopic" />
+
+    <Button
+        android:id="@+id/buttonEditTopic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="63dp"
+        android:onClick="buttonToEdit"
+        android:text="İlerle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerEditTopic2" />
+
+    <Spinner
+        android:id="@+id/spinnerEditTopic"
+        android:layout_width="331dp"
+        android:layout_height="67dp"
+        android:layout_marginTop="84dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

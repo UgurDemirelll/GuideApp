@@ -12,33 +12,48 @@
         android:layout_width="406dp"
         android:layout_height="259dp"
         android:layout_marginTop="12dp"
+        android:onClick="imageSelect"
         android:src="@drawable/gorselsecimi"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/textEditSave"
-        android:layout_width="404dp"
-        android:layout_height="266dp"
+        android:layout_width="401dp"
+        android:layout_height="221dp"
         android:ems="10"
         android:hint="Açıklama Giriniz"
         android:inputType="textPersonName"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageEditSave" />
+        app:layout_constraintTop_toBottomOf="@+id/textEditSaveIssue" />
 
     <Button
-        android:id="@+id/buttonKaydet"
+        android:id="@+id/buttonEditSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="1dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="24dp"
+        android:onClick="saveButton"
         android:text="Kaydet"
         app:cornerRadius="25dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textEditSave" />
+
+    <TextView
+        android:id="@+id/textEditSaveIssue"
+        android:layout_width="398dp"
+        android:layout_height="40dp"
+        android:hint="Ayraç Giriniz"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageEditSave" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

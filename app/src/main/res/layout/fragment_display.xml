@@ -19,12 +19,26 @@
 
     <TextView
         android:id="@+id/textDisplay"
+        android:layout_width="389dp"
+        android:layout_height="287dp"
         android:background="#71C1C0"
-        android:layout_width="397dp"
-        android:layout_height="330dp"
         android:text="TextView"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textDisplayIssue" />
+
+    <TextView
+        android:id="@+id/textDisplayIssue"
+        android:layout_width="392dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:text="TextView"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/imageDisplay"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageDisplay" />
 

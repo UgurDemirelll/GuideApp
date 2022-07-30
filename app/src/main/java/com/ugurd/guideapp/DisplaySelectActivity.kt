@@ -14,6 +14,7 @@ class DisplaySelectActivity : AppCompatActivity() {
     private val topic = ArrayList<String>()
     private lateinit var veriAdaptoru:ArrayAdapter<String>
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_display_select)
