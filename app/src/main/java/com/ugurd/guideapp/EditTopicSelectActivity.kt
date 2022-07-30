@@ -29,8 +29,9 @@ class EditTopicSelectActivity : AppCompatActivity() {
 
 
         buttonEditTopic.setOnClickListener {
-            val intent = Intent(this@EditTopicSelectActivity,EditSaveFragment::class.java)
+            val intent = Intent(this@EditTopicSelectActivity,EditSaveActivity::class.java)
             intent.putExtra("topicname",topic[spinnerEditTopic.selectedItemPosition])
+            println(topic[spinnerEditTopic.selectedItemPosition])
             startActivity(intent)
         }
 

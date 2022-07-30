@@ -33,9 +33,7 @@ class EditSaveFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         return inflater.inflate(R.layout.fragment_edit_save, container, false)
     }
@@ -48,6 +46,7 @@ class EditSaveFragment : Fragment() {
         imageEditSave.setOnClickListener {
             imageSelect(it)
         }
+
     }
 
 
@@ -93,11 +92,7 @@ class EditSaveFragment : Fragment() {
             }
         }
 
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
 
         if (requestCode == 1){
             if(grantResults.size > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
@@ -157,6 +152,7 @@ class EditSaveFragment : Fragment() {
 
             return  Bitmap.createScaledBitmap(selectedBitmap,width,height,true)
         }
+
 }
 
 
