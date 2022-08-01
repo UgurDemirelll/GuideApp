@@ -3,8 +3,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigationsave_graph"
-    app:startDestination="@id/editSaveListFragment">
-
+    app:startDestination="@id/editTopicFragment">
+    <fragment
+        android:id="@+id/editTopicFragment"
+        android:name="com.ugurd.guideapp.EditTopicFragment"
+        android:label="fragment_edit_topic"
+        tools:layout="@layout/fragment_edit_topic" >
+        <action
+            android:id="@+id/action_editTopicFragment_to_editSaveListFragment"
+            app:destination="@id/editSaveListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editSaveFragment"
+        android:name="com.ugurd.guideapp.EditSaveFragment"
+        android:label="fragment_edit_save"
+        tools:layout="@layout/fragment_edit_save" >
+        <action
+            android:id="@+id/action_editSaveFragment_to_editTopicFragment"
+            app:destination="@id/editTopicFragment" />
+    </fragment>
     <fragment
         android:id="@+id/editSaveListFragment"
         android:name="com.ugurd.guideapp.EditSaveListFragment"
@@ -13,14 +30,5 @@
         <action
             android:id="@+id/action_editSaveListFragment_to_editSaveFragment"
             app:destination="@id/editSaveFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/editSaveFragment"
-        android:name="com.ugurd.guideapp.EditSaveFragment"
-        android:label="fragment_edit_save"
-        tools:layout="@layout/fragment_edit_save" >
-        <action
-            android:id="@+id/action_editSaveFragment_to_editSaveListFragment"
-            app:destination="@id/editSaveListFragment" />
     </fragment>
 </navigation>

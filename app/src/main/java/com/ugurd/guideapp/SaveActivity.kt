@@ -2,6 +2,7 @@ package com.ugurd.guideapp
 
 import android.Manifest
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
@@ -14,7 +15,9 @@ import android.provider.MediaStore
 import android.view.View
 import androidx.core.content.ContextCompat
 import kotlinx.android.synthetic.main.activity_save.*
+import kotlinx.android.synthetic.main.activity_save_topic.*
 import kotlinx.android.synthetic.main.fragment_edit_save.*
+import java.io.ByteArrayOutputStream
 
 
 class SaveActivity : AppCompatActivity() {
@@ -22,14 +25,62 @@ class SaveActivity : AppCompatActivity() {
     var selectedBitmap : Bitmap? =null
 
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_save)
+
+
+
+
     }
 
-
     fun buttonSave(view: View){
-        //sql kayıt
+        val getintent = intent
+        val topicName = getintent.getStringExtra("topicname")
+        println("kaydet butonuna tıklandığında topic name : $topicName")
+        val topicIssue = getintent.getStringExtra("issuename").toString()
+        val topicExplanation = textSave.text.toString()
+
+
+
+
+        if (selectedBitmap != null){
+
+            val smallBitmap = bitmapMinimize(selectedBitmap!!,300)
+            val outputStream = ByteArrayOutputStream()
+            smallBitmap.compress(Bitmap.CompressFormat.PNG,50,outputStream)
+            val byteArray = outputStream.toByteArray()
+
+
+            try {
+                val database = this.openOrCreateDatabase("Topics", Context.MODE_PRIVATE,null)
+                database.execSQL("CREATE TABLE IF NOT EXISTS topics (id INTEGER PRIMARY KEY,topicName VARCHAR, topicIssue VARCHAR,topicExplanation VARCHAR,image BLOB)")
+                val sqlString = "INSERT INTO topics (topicName,topicIssue,topicExplanation,image) VALUES (?,?,?,?)"
+                val statement = database.compileStatement(sqlString)
+                statement.bindString(1,topicName)
+                statement.bindString(2,topicIssue)
+                statement.bindString(3,topicExplanation)
+                statement.bindBlob(4,byteArray)
+                statement.execute()
+                val cursor = database.rawQuery("SELECT * FROM topics",null)
+                val topicName = cursor.getColumnIndex("topicName")
+
+                while (cursor.moveToNext()) {
+
+                    println(cursor.getString(topicName).toString())
+                }
+                cursor.close()
+
+            }catch (e : Exception){
+                e.printStackTrace()
+            }
+
+            val intent = Intent(this@SaveActivity,SaveTopicActivity::class.java)
+            startActivity(intent)
+
+        }
     }
     fun imageSaveSelect(view: View){
         if (ContextCompat.checkSelfPermission(applicationContext,Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
@@ -68,7 +119,6 @@ class SaveActivity : AppCompatActivity() {
 
                     if (selectedPicture != null) {
                         if (Build.VERSION.SDK_INT >= 28) {
-                            println("çalıştı")
                             val source = ImageDecoder.createSource(applicationContext.contentResolver, selectedPicture!!)
                             selectedBitmap = ImageDecoder.decodeBitmap(source)
                             imageSave.setImageBitmap(selectedBitmap)

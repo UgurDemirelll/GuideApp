@@ -15,6 +15,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Spinner
+import android.widget.TextView
 import androidx.activity.result.ActivityResult
 import androidx.core.content.ContextCompat
 import kotlinx.android.synthetic.main.activity_edit_topic_select.*
@@ -23,19 +25,26 @@ import java.io.ByteArrayOutputStream
 
 class EditSaveFragment : Fragment() {
 
+
+
     var topicName : String? = null
     var selectedPicture : Uri? = null
     var selectedBitmap : Bitmap? =null
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
+
+
 
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val view: View = inflater.inflate(R.layout.fragment_edit_save, container, false)
 
-        return inflater.inflate(R.layout.fragment_edit_save, container, false)
+        return view
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -52,7 +61,7 @@ class EditSaveFragment : Fragment() {
 
         fun saveButton(view: View){
             val explanation = textEditSave.text.toString()
-            
+
             if (selectedBitmap != null){
 
                 val smallBitmap = bitmapMinimize(selectedBitmap!!,300)
@@ -61,6 +70,7 @@ class EditSaveFragment : Fragment() {
                 val byteArray = outputStream.toByteArray()
                 try {
                     context?.let {
+
                         val database = it.openOrCreateDatabase("Topics",Context.MODE_PRIVATE,null)
                         database.execSQL("CREATE TABLE IF NOT EXISTS $topicName (id INTEGER PRIMARY KEY, issuename VARCHAR,topicexplanation VARCHAR,image BLOB)")
                         //topic[spinner2.selectedItemPosition]database.execSQL("INSERT INTO ")

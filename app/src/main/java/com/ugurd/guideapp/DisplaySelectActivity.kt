@@ -18,9 +18,9 @@ class DisplaySelectActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_display_select)
-        topic.add("deneme1")
-        topic.add("deneme2")
-        topic.add("deneme3")
+        topic.add("Konu Seçiniz")
+
+
         veriAdaptoru = ArrayAdapter(this@DisplaySelectActivity,android.R.layout.simple_list_item_1, android.R.id.text1, topic)
         spinner.adapter = veriAdaptoru
 
@@ -28,5 +28,7 @@ class DisplaySelectActivity : AppCompatActivity() {
             val intent = Intent(applicationContext, DisplayActivity::class.java)
             startActivity(intent)
     }
+
+        //val database = this.openOrCreateDatabase()
     }
 }
