@@ -7,11 +7,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.Spinner
 import androidx.navigation.Navigation
+import com.ugurd.guideapp.databinding.ActivityMainBinding
+import kotlinx.android.synthetic.*
+import kotlinx.android.synthetic.main.activity_display_select.*
+import kotlinx.android.synthetic.main.activity_display_select.view.*
 import kotlinx.android.synthetic.main.activity_edit_topic_select.*
 import kotlinx.android.synthetic.main.fragment_edit_topic.view.*
 
 class EditTopicFragment : Fragment() {
+
 
     private val topic = ArrayList<String>()
     private lateinit var veriAdaptoru: ArrayAdapter<String>
@@ -20,43 +26,29 @@ class EditTopicFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //setContentView(R.layout.fragment_edit_topic)
-        /*topic.add("Konu Seç")
-        topicContent.add("Ayraç Seç")
-        veriAdaptoru = ArrayAdapter(
-            this@EditTopicFragment,
-            android.R.layout.simple_list_item_1,
-            android.R.id.text1,
-            topic
-        )
-        veriAdaptorContent = ArrayAdapter(
-            this@EditTopicFragment,
-            android.R.layout.simple_list_item_1,
-            android.R.id.text1,
-            topicContent
-        )
-        spinnerEditTopic.adapter = veriAdaptoru
-
-
-         */
 
 
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_edit_topic, container, false)
+        try {
+            activity?.let {
 
+                topic.add("Konu Seçiniz")
+                veriAdaptoru = ArrayAdapter(it, android.R.layout.simple_list_item_1, android.R.id.text1, topic)
+                println("try buraya kadar çalıştı")
+                view.spinnerEditTopic.adapter = veriAdaptoru
 
+        }
+            }catch (e:Exception){
+                e.printStackTrace()
+            }
         view.buttonEditTopic.setOnClickListener {
 
-            Navigation.findNavController(it)
-                .navigate(R.id.action_editTopicFragment_to_editSaveListFragment)
-
-
+            Navigation.findNavController(it).navigate(R.id.action_editTopicFragment_to_editSaveListFragment)
         }
         return view
     }
+
 }

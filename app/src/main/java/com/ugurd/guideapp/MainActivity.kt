@@ -6,16 +6,18 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import com.ugurd.guideapp.databinding.ActivityMainBinding
 
 
 class MainActivity : AppCompatActivity() {
+
     lateinit var newIntent: Intent
 
     @SuppressLint("Recycle")
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onCreate(savedInstanceState: Bundle?) { super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+/*
         val database = this.openOrCreateDatabase("Topics",Context.MODE_PRIVATE,null)
 
         val cursor = database.rawQuery("SELECT * FROM topics",null)
@@ -31,13 +33,15 @@ class MainActivity : AppCompatActivity() {
         cursor.close()
 
 
+ */
+
 
 
 
 
     }
     fun displayClick(view: View){
-        val intent = Intent(this@MainActivity,DisplaySelectActivity::class.java)
+        val intent = Intent(this@MainActivity,DisplayActivity::class.java)
         startActivity(intent)
     }
 

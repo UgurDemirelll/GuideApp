@@ -53,8 +53,8 @@ class SaveTopicActivity : AppCompatActivity() {
     }
     fun forward(view: View){
         val intent = Intent(this@SaveTopicActivity,SaveActivity::class.java)
-        val putTopicName = textTopicSelect.text
-        val putTopicIssue = textTopicIssue.text
+        val putTopicName = textTopicSelect.text.toString()
+        val putTopicIssue = textTopicIssue.text.toString()
         println("ileri butonuna tıklandığında topic name: $putTopicName")
         intent.putExtra("topicname",putTopicName)
         intent.putExtra("issuename",putTopicIssue)

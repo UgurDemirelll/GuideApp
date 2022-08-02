@@ -30,10 +30,6 @@ class SaveActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_save)
-
-
-
-
     }
 
     fun buttonSave(view: View){
@@ -42,9 +38,6 @@ class SaveActivity : AppCompatActivity() {
         println("kaydet butonuna tıklandığında topic name : $topicName")
         val topicIssue = getintent.getStringExtra("issuename").toString()
         val topicExplanation = textSave.text.toString()
-
-
-
 
         if (selectedBitmap != null){
 

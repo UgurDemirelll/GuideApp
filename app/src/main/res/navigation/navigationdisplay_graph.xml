@@ -2,7 +2,8 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/navigationdisplay_graph">
+    android:id="@+id/navigationdisplay_graph"
+    app:startDestination="@id/displaySelectFragment">
 
     <fragment
         android:id="@+id/displayListFragment"
@@ -19,7 +20,16 @@
         android:label="fragment_display"
         tools:layout="@layout/fragment_display" >
         <action
-            android:id="@+id/action_displayFragment_to_displayListFragment"
+            android:id="@+id/action_displayFragment_to_displaySelectFragment"
+            app:destination="@id/displaySelectFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/displaySelectFragment"
+        android:name="com.ugurd.guideapp.DisplaySelectFragment"
+        android:label="fragment_display_select"
+        tools:layout="@layout/fragment_display_select" >
+        <action
+            android:id="@+id/action_displaySelectFragment_to_displayListFragment"
             app:destination="@id/displayListFragment" />
     </fragment>
 </navigation>
